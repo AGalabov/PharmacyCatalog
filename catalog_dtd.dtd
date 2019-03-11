@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT catalog (medicines,cosmetics,supplements,products)>
+
+<!ELEMENT medicines (pr_name)*>
+<!ELEMENT cosmetics (pr_name)*>
+<!ELEMENT supplements (pr_name)*>
+
+<!ELEMENT products (product)*>
+
+<!ELEMENT pr_name (#PCDATA)>
+<!ATTLIST pr_name ref IDREF #REQUIRED>
+
+<!ELEMENT product (name,img,(prescription|(type,class)),information,quantity,price,stock)>
+<!ATTLIST product
+category (Medicine|Cosmetic|Supplement) #REQUIRED
+serialNumber ID #REQUIRED
+>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT img EMPTY>
+	<!ATTLIST img href ENTITY #REQUIRED>
+	
+<!ELEMENT prescription (#PCDATA)>
+<!ELEMENT class (#PCDATA)>
+<!ELEMENT type (#PCDATA)> 
+<!ELEMENT information (manufacturer,description,(dosage)?)>
+
+<!ELEMENT manufacturer (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT dosage (children,adults)>
+
+<!ELEMENT children (#PCDATA)>
+<!ELEMENT adults (#PCDATA)>
+
+<!ELEMENT quantity (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT stock (#PCDATA)> 
+
+<!NOTATION jpg PUBLIC "jpg viewer">
